@@ -1,0 +1,95 @@
+<!-- This is a comment in HTML -->
+<!--  -->
+<!-- Comments are NOT rendered as code when a file is read -->
+<!DOCTYPE html>
+<html lang="en">
+	<!-- 
+		- DOCTYPE: declares exactly what it is, an HTML document
+		- lang: notes what language the document is written in. Helps with search engines and browsers
+
+		- the head tag holds all of our meta data for the document.
+		- This holds various information such as the title of the document, viewport settings, and links to other files, such as CSS
+	 -->
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- 
+		- charset: defines what characters are available, such as 0-9, a-z, symbols, etc.
+		- http-equiv: Allows us to render older browser versions if necessary. In this case, it is targeting Edge: however this is not necessary
+		- name and content: details on the user's browser, viewport, screen, and it auto scales as necessary
+		- title: the title of our document. this is displayed in the tab of our web browser
+	 -->
+</head>
+<body>
+	<!-- 
+		body: what the client will be rendering
+	 -->
+	<h1>Examples of Structural Elements</h1>
+	<div>
+		<div>
+			<p>
+				- h1: heading, these range from h1 -h6, getting smaller as the number inreases.
+			</p>
+			<p>
+				- div: a division
+			</p>
+			<p>
+				- p: paragraph element
+			</p>
+			<p>
+				- img: provide an image element
+			</p>
+			<p>
+				- span: we can write a block of text without line breaks
+			</p>
+		</div>
+		<h2>Sample H2</h2>
+		<h3>Sample H3</h3>
+		<span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error officiis quisquam inventore similique sequi qui fuga, quos tempora repudiandae quod, veritatis architecto vitae? Facilis placeat quia, optio quos vitae in.
+		</span>
+		<img src="https://assets.website-files.com/5f4577933a0688792f77983b/5ffcaf5bf69d7dbee581b8e3_01_11-21_UPRIGHT_LOGO_800.png" alt="Upright Education Logo">
+		<!-- 
+			the img tag has two default attributes
+			- src
+				- required
+				- source of the image, this could either be a relative path to an assets folder, or a direct link to an image on the web
+					- link would be what we are using in this example
+					- relative path would be "./assets/image.png"
+			- alt
+				- optional but HIGHLY recommended
+				- text used in case an image doesn't load
+				- the text that is read by a screen reader for the visually impaired
+				- can be a source for SEO (search engine optimization)
+		 -->
+		 <!-- 
+			ul: Unordered List
+			ol: Ordered List
+			li: List Item
+
+			emmet abbreviation: div>ul>li*6
+		  -->
+		  <div>
+			<ul>
+				<li><strong>Bolds our text</strong> but so does <b>this.</b></li>
+				<li><em>Provides emphasis</em> or <i>italics</i></li>
+				<li><br>Will do a line break for us. <i>Notice no closing tag?</i></li>
+				<li><hr>Gives us a horizontal rule or <b>dividing line</b></li>
+				<li><blockquote>"quote"</blockquote></li>
+				<li><pre>A way to showcase code</pre></li>
+			</ul>
+		  </div>
+		  <!-- a few more self-closing tages -->
+		  <div>
+			<!-- 
+				- input: typically used for forms, but not limited to them
+					- Many different types of inputs, number, date, time, email, radial
+				- link is not going to show up on the browser, but is used to connect different files together, such as a CSS file to an HTML page
+			 -->
+			<input type="text">
+			<link rel="stylesheet" href="">
+		  </div>
+	</div>
+</body>
+</html>
