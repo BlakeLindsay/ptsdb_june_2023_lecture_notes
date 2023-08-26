@@ -16,8 +16,30 @@ function displayOrder(event) {
 	console.log(form.orderName); // an entire input field
 	console.log(form.orderName.value); // the name input by the user
 	console.log(form.toppings.value);
-	console.log(form.size.value); 
+	console.log(form.size.value);
+	/* 
+		- make a variable or variables for the information from the user
+		- append some elements to the page (tr[1], td[4])
+	*/
+	const row = document.createElement('tr');
+	const name = document.createElement('td');
+	const orderNumber = document.createElement('td');
+	const toppings = document.createElement('td');
+	const size = document.createElement('td');
+	
+	table.appendChild(row);
+	
+	row.appendChild(orderNumber);
+	row.appendChild(name);
+	row.appendChild(size);
+	row.appendChild(toppings);
+
+	name.innerText = form.orderName.value;
+	orderNumber.innerText = currentOrder++;
+	toppings.innerText = form.toppings.value;
+	size.innerText = form.size.value;
 };
+
 
 // listen for when the form is submitted
 form.addEventListener("submit", displayOrder);
