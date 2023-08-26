@@ -3,12 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./index.css">
 	<title>Form DOM Example</title>
 </head>
 <body>
-	
+	<h1>Pizza Order</h1>
+
+	<!-- a form is used in html as a grouping of inputs -->
 	<form>
-		
+		<!-- input does NOT have to be inside of a form, the form simply provides us a "wrapper" to reference diffrent inputs -->
+		<input autocomplete="off" type="text" placeholder="enter your name" name="orderName">
+		<label for="orderName">Name on the Order</label>
 	</form>
 
 	<!-- connecting my js file to my html page -->
