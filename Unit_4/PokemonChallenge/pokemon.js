@@ -21,12 +21,28 @@ function getPokemon(event) {
 		} else {
 			type2.innerText = '';
 		}
+		movesList.innerHTML = '';
 		data.moves.forEach((move) => {
 			let element = document.createElement('div');
 			element.className = "row align-items-center";
 			element.innerText = move.move.name;
 			movesList.appendChild(element);
 		});
+
+		let locations = data.location_area_encounters;
+
+		fetch(locations)
+		.then(response => response.json())
+		.then(data2 => {
+			console.log('data2: ', data2);
+			encounterAreas.innerHTML = '';
+			data2.forEach((location) => {
+				let element2 = document.createElement('div');
+				element2.className = "row align-items-center";
+				element2.innerText = location.location_area.name;
+				encounterAreas.appendChild(element2);
+			});
+		})
 	})
 	.catch(error => console.error("pokemon problem", error))
 }
