@@ -1,4 +1,6 @@
 const form = document.querySelector('form');
+const pokeName = document.getElementById('pokeName');
+const pokeNumber = document.getElementById('pokeNumber');
 const sprite = document.getElementById('sprite');
 const type1 = document.getElementById('type1');
 const type2 = document.getElementById('type2');
@@ -14,6 +16,8 @@ function getPokemon(event) {
 	.then(response => response.json())
 	.then(data => {
 		console.log(data);
+		pokeName.innerText = data.name;
+		pokeNumber.innerText = data.id;
 		sprite.src = data.sprites["front_default"];
 		type1.innerText = data.types[0].type.name;
 		if (data.types[1] != undefined) {
