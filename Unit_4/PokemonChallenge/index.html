@@ -8,33 +8,37 @@
 	<title>Pokemon Searcher</title>
 </head>
 <body>
-	<nav class="navbar bg-body-tertiary">
+	<nav class="navbar bg-danger">
 		<div class="container-fluid">
-		  <form class="d-flex" role="search">
-			<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="input">
-			<button class="btn btn-outline-success" type="submit">Search</button>
+			<form class="d-flex" role="search">
+				<h1 id="pokeName" class="mr-auto">Pokemon Name</h1>
+				<h2 id="pokeNumber" class="">####</h2>
+				<input class="form-control align-self-end" type="search" placeholder="Search" aria-label="Search" name="input">
+			<button class="btn bg-white" type="submit">Search</button>
 		  </form>
 		</div>
 	  </nav>
 
-	  <h1 id="pokeName">Pokemon Name</h1>
-	  <h2 id="pokeNumber">####</h2>
+	  
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<img class="img-thumbnail" id="sprite">
+				<div id="type1">Type 1</div>
+				<div id="type2">Type 2</div>
+			</div>
 
-	<div>
-		<img class="img-thumbnail" id="sprite">
-		<div id="type1">Type 1</div>
-		<div id="type2">Type 2</div>
-	</div>
+			<div class="col container text-center" id="encounterAreas">
+				<div class="row align-items-center">
+					encounter areas
+				</div>
+			</div>
 
-	<div class="container text-center" id="encounterAreas">
-		<div class="row align-items-center">
-			encounter areas
-		</div>
-	</div>
-
-	<div class="container text-center" id="movesList">
-		<div class="row align-items-center">
-			moves list
+			<div class="col container text-center" id="movesList">
+				<div class="row align-items-center">
+					moves list
+				</div>
+			</div>
 		</div>
 	</div>
 
