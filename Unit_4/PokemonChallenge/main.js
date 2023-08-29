@@ -52,3 +52,21 @@ function getPokemon(event) {
 }
 
 form.addEventListener('submit', getPokemon);
+
+/*
+
+async function getPokemonData() {
+	let result = await fetch('https://pokeapi.co/api/v2/pokemon/shuckle');
+	let pokeData = await result.json();
+
+	console.log(pokeData); // 
+}
+
+//getPokemonData();
+
+// run this function when my webpage loads
+window.onload = (event) => {
+	getPokemonData();
+}
+
+*/
