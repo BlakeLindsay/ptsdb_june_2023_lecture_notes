@@ -64,7 +64,7 @@ function dashesToSpaces(input) {
 	}
 	return output;
 }
-//or just use .replace()
+//or just use .replace() or .replaceAll()
 
 /*
 
