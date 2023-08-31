@@ -29,7 +29,7 @@ function getPokemon(event) {
 		data.moves.forEach((move) => {
 			let element = document.createElement('div');
 			element.className = "row align-items-center";
-			element.innerText = move.move.name;
+			element.innerText = dashesToSpaces(move.move.name);
 			movesList.appendChild(element);
 		});
 
@@ -52,6 +52,19 @@ function getPokemon(event) {
 }
 
 form.addEventListener('submit', getPokemon);
+
+function dashesToSpaces(input) {
+	output = '';
+	for (let i = 0; i < input.length; i++){
+		if(input[i] !== '-') {
+			output += input[i];
+		} else {
+			output += ' ';
+		}
+	}
+	return output;
+}
+//or just use .replace()
 
 /*
 
