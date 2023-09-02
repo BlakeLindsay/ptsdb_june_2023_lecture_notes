@@ -17,7 +17,15 @@ const app = express();
 
 // Create Endpoints
 app.use('/', (request, response) => {
-	response.send('Hello from the server!');
+	// response.send(578); // numbers cannot be sent
+	// response.json will also send information back to our "client" (in this example we are using a web browser). This method will send back a JSON formatted object as the response body.
+	response.json({
+		message: 'Hello from the server!',
+		randomNumber: 813,
+		someBoolean: true,
+		coolArray: ['This', 'Is', 'So', 'Cool', '!']
+	});
+	// response.send('<h1>My Header</h1>') // we can send HTML in our .send() method
 	// I am only allowed to send back a single response from any given endpoint. thinkn of this similar to "return" in vanilla JS
 	// response.send('This is a follow-up from the server?') // error
 });
