@@ -15,6 +15,13 @@ const app = express();
 // give me a new instance of an express application, stored within my "app" variable
 // we will not make a new instance of every module, or package, that we install. This is something specific to express
 
+// Create Endpoints
+app.use('/', (request, response) => {
+	response.send('Hello from the server!');
+	// I am only allowed to send back a single response from any given endpoint. thinkn of this similar to "return" in vanilla JS
+	// response.send('This is a follow-up from the server?') // error
+});
+
 // Start our server
 // in order to start out server, we need our application to "listen" on a specific part of our computer
 app.listen(4000, () => console.log(`App is listening on port 4000`));
