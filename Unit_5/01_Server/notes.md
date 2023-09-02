@@ -22,3 +22,9 @@ If we ever need to, we can delete our `node_modules` folder safely. This may hap
 	-`node index.js`
 		- this will use "node" to run our 
 		- We will need to stop, then re-run our server in order to interact with changes we make to our files
+
+## CRUD (Create, Read, Update, Delete)
+	- Create: POST
+	- Read: GET
+	- Update: PUT / PATCH
+	- Delete: DELETE
