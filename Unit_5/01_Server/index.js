@@ -13,6 +13,7 @@ const express = require('express');
 // initialize a new express instance
 const app = express();
 // give me a new instance of an express application, stored within my "app" variable
+// we will not make a new instance of every module, or package, that we install. This is something specific to express
 
 // Start our server
 // in order to start out server, we need our application to "listen" on a specific part of our computer
