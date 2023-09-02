@@ -9,13 +9,21 @@ console.log('This is my first server!');
 // giving myself access to the express package
 const express = require('express');
 // require my application to have the information from "express" in order to run. we can think of this like linking a file in HTML
+const practiceController = require('./controllers/practiceController');
 
 // initialize a new express instance
 const app = express();
 // give me a new instance of an express application, stored within my "app" variable
 // we will not make a new instance of every module, or package, that we install. This is something specific to express
 
+//Using Controllers
+// once we have required the controller we want, we can use it within our app, we just need to provide its own endpoint
+app.use('/practice', practiceController);
+// this will set our practice controller to take over once we go to the '/practice' endpoint
+
 // Create Endpoints
+// create an endpoing at the route "/", this is our link to the server with nothing written after it
+// if my route ONLY has a '/', it means I do not have to write anything else in my url
 app.use('/', (request, response) => {
 	// response.send(578); // numbers cannot be sent
 	// response.json will also send information back to our "client" (in this example we are using a web browser). This method will send back a JSON formatted object as the response body.

@@ -7,8 +7,14 @@ const router = require('express').Router();
 // create some endpoints using this router
 // basic GET route '/'
 router.get('/', (request, response) =>{
-	response.send('Practice Controller');
+	response.json({
+		message: 'Practice Controller'
+	});
 });
+
+router.get('/something', (req, res) => {
+	res.json({sample: "This is the something endpoint"});
+})
 
 //make this router available outside of this file
 module.exports = router;
