@@ -12,6 +12,7 @@ router.get('/', (request, response) =>{
 	});
 });
 
+// '/practice/something' endpoint
 router.get('/something', (req, res) => {
 	res.json({sample: "This is the something endpoint"});
 })
