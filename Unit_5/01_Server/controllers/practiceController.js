@@ -37,7 +37,7 @@ router.get('/challenge', (req, res) => {
 		else
 			numArray.push(i);
 	}
-	res.send(numArray);
+	res.json(numArray);
 });
 
 //make this router available outside of this file
