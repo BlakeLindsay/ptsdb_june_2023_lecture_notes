@@ -25,7 +25,7 @@ router.get('/something', (req, res) => {
 	instead of a new endpoint, make a new controller with a "fizz-buzz endpoint"
 */
 
-router.get('/challenge', (req, res) => {
+router.get('/fizz-buzz', (req, res) => {
 	let numArray = [];
 	for(let i = 1; i <= 100; i++) {
 		if (i % 15 === 0)
