@@ -4,6 +4,22 @@ const router = express.Router();
 // const router = require('express').Router(); // also works
 const pies = [];
 
+/* 
+	{
+		id: 1,
+		filling:'blueberry',
+		crust: 'graham cracker',
+		size: 14
+	} 
+
+	{
+		id: 2,
+		filling:'blueberry',
+		crust: 'graham cracker',
+		size: 14
+	} 
+*/
+
 // STEP 2: Add endpoints to our new router
 router.get('/', (req, res) => {
 	// GET - get information from a link
@@ -15,6 +31,7 @@ router.post('/new', (req, res) => {
 	// POST - used to send information from a client to the server
 	console.log(req.body); // main content of the request
 	pies.push(req.body);
+	//the response is not a return, the function will keep running after a response is sent to the client
 	res.status(202).json({message: "new pizza"});
 })
 
