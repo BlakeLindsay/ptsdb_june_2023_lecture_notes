@@ -1,1 +1,21 @@
+/* 
+	! Challenge
+	Create a new controller named `mathController` which will have one single `addition` endpoint. This endpoint will require a POST action, and should expect 2 pieces of information from the request. Once you go to this endpoint, it will take those two numbers and add them together before sending the sum back the the client. This should have a status of 200 when it runs properly.
+	*STRETCH GOAL:
+	Check whether the client has sent you two numbers; only run the addition when you have two numbers, otherwise send back an error response to the server telling the client what went wrong.
+*/
+
 const router = require('express').Router();
+
+router.post('/addition', (req, res) => {
+	console.log(req.body);
+	console.log(typeof req.body.num1, typeof req.body.num2)
+	if (typeof req.body.num1 === 'number' && typeof req.body.num2 === 'number') {
+		let sum = req.body.num1 + req.body.num2;
+		res.status(200).json({sum: sum});
+	} else {
+		res.status(400).json({error: "needs two numbers"});
+	}
+});
+
+module.exports = router;

@@ -11,6 +11,7 @@ const express = require('express');
 // require my application to have the information from "express" in order to run. we can think of this like linking a file in HTML
 const practiceController = require('./controllers/practiceController');
 const pieController = require('./controllers/pieController');
+const mathController = require('./controllers/mathController');
 
 // initialize a new express instance
 const app = express();
@@ -25,6 +26,7 @@ app.use(express.json()); // This needs to go underneath the app declaration, but
 app.use('/practice', practiceController);
 // this will set our practice controller to take over once we go to the '/practice' endpoint
 app.use('/pie/', pieController);
+app.use('/math', mathController);
 
 // Create Endpoints
 // create an endpoing at the route "/", this is our link to the server with nothing written after it
