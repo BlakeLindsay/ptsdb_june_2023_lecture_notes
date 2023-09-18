@@ -3,11 +3,30 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const express = require('express');
-
 const app = express();
 //? const app = require('express')(); // immediately create a new express app while "importing" that information
 
+const mongoose = require('mongoose');
+//const MONGO = 'mongodb://localhost:27017'; // might give error
+// const MONGO = process.env.MONGO; //* connection string - the link to our database
+const { PORT, MONGO } = process.env; // destructure the PORT property from my env file
+
+
+// use that link to actually connect with the database
+mongoose.connect(`${MONGO}/PizzaPlace`);
+
+const db = mongoose.connection; // this is going to store our connection
 app.use(express.json());
+
+const users = require('./controllers/user.controller.js');
+app.use('/user', users);
+const pizzas = require('./controllers/pizza.controller.js');
+app.use('/pizza', pizzas);
+
+// this will run a single time when we successfully connect to our database
+db.once('open', () => console.log(`Connected to: ${MONGO}`));
+
+
 
 app.get('/test', (req, res) => {
 	res.status(200).json({ message: "Server is accessible", port: process.env.PORT });
@@ -15,4 +34,16 @@ app.get('/test', (req, res) => {
 });
 
 // application.listen(4000); // technically this is enough
-app.listen(process.env.PORT, () => console.log(`App is listening on port ${process.env.PORT}`));
+app.listen(PORT, () => console.log(`App is listening on port ${process.env.PORT}`));
+
+/*
+    ! Challenge
+        - create a new model defining pizzas. this model should have
+            - toppings (string)
+            - crust (string)
+            - slices (number)
+        - create a pizza controller
+            - this will have an endpoint to post a new order to the database
+            - the link for this endpoint should be:
+                `localhost:4000/pizza/order`
+*/
