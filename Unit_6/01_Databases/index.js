@@ -11,20 +11,21 @@ const mongoose = require('mongoose');
 // const MONGO = process.env.MONGO; //* connection string - the link to our database
 const { PORT, MONGO } = process.env; // destructure the PORT property from my env file
 
-
 // use that link to actually connect with the database
-mongoose.connect(`${MONGO}/PizzaPlace`);
+mongoose.connect(`${process.env.MONGO}/PizzaPlace`);
 
 const db = mongoose.connection; // this is going to store our connection
-app.use(express.json());
-
-const users = require('./controllers/user.controller.js');
-app.use('/user', users);
-const pizzas = require('./controllers/pizza.controller.js');
-app.use('/pizza', pizzas);
 
 // this will run a single time when we successfully connect to our database
 db.once('open', () => console.log(`Connected to: ${MONGO}`));
+
+app.use(express.json());
+
+const users = require('./controllers/user.controller');
+app.use('/user', users);
+const pizzas = require('./controllers/pizza.controller');
+app.use('/pizza', pizzas);
+
 
 
 
