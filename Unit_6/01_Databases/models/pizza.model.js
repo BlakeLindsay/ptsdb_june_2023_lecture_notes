@@ -4,7 +4,7 @@ const PizzaSchema = new mongoose.Schema({
 	toppings: String,
 	crust: {
 		type: String,
-		required: false // NOTE: required is false by default
+		required: false // NOTE: not required, is false by default
 	},
 	slices: Number
 });
