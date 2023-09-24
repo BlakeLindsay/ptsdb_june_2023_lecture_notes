@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h1 {
+      background-position: 0px;
+    }
+
+    /* input {
+
+    } */
+  </style>
+</head>
+<body>
+  <h1>Some Words</h1>
+
+  <input>
+  <script src="./index.js"></script>
+  <script>
+    // function haircut(sideburn, blend, topLength) {
+    //   // function log(input) {
+    //   //   console.log(input);
+    //   // }
+    //   console.log(sideburn);
+    // }
+    // let haircutArgs = ['example', null, 3];
+    // haircut(...haircutArgs);
+
+    let input = document.querySelector('input');
+
+    function listener (event) {
+      event.preventDefault()
+      console.log(event.target.value)
+    }
+
+    input.addEventListener('keyup', listener)
+
+    async function exampleFunc() {
+      let response = await fetch('https://pokeapi.co/api/v2/pokemon/ditto');
+      let data = await response.json();
+      console.log(data);
+    }
+ 
+    exampleFunc();
+    console.log('waiting for response.')
+    console.log('waiting for response..')
+    console.log('waiting for response...')
+    console.log('waiting for response....')
+    console.log('waiting for response.....')
+  </script>
+</body>
+</html>

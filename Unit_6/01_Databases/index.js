@@ -19,14 +19,16 @@ const db = mongoose.connection; // this is going to store our connection
 // this will run a single time when we successfully connect to our database
 db.once('open', () => console.log(`Connected to: ${MONGO}`));
 
+//! without this line, I cannot access JSON data from a request
 app.use(express.json());
 
 const users = require('./controllers/user.controller');
-app.use('/user', users);
 const pizzas = require('./controllers/pizza.controller');
+const validateSession = require('./middleware/validateSession');
+app.use('/user', users);
+// validate session middleware
+app.use(validateSession); // ALL endpoints and routes below this line will require the validateSession middleware to run successfully before the endpoint runs
 app.use('/pizza', pizzas);
-
-
 
 
 app.get('/test', (req, res) => {
@@ -34,7 +36,7 @@ app.get('/test', (req, res) => {
 	//* process.env will access the ".env" file, and we can dot notation to get whatever specific value we want from that file
 });
 
-// application.listen(4000); // technically this is enough
+// app.listen(process.env.PORT); // technically this is enough
 app.listen(PORT, () => console.log(`App is listening on port ${process.env.PORT}`));
 
 /*
