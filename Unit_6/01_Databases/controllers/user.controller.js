@@ -44,7 +44,7 @@ router.post('/signup', async (req, res) => {
 	const newUser = await user.save(); //* user.save() will write our new user to the database AND asynchronously give us back that entry FROM the database.
 
 	// run our code to create a new json web token
-	const token = jwt.sign({ message: 'Hello World!'}, process.env.JWT, { expiresIn: "1 day"} );
+	const token = jwt.sign({ id: newUser._id }, process.env.JWT, { expiresIn: "1 day"} );
 	/* 
 		- sign method is going to take in 3 arguments
 			- 1. payload
@@ -88,7 +88,7 @@ router.post('/login', async function(req, res) {
 		}
 
 		// 3 - create a json web token [Monday]
-		const token = jwt.sign({ message: 'user has logged in'}, process.env.JWT, { expiresIn: '1 day'});
+		const token = jwt.sign({ id: user._id }, process.env.JWT, { expiresIn: '1 day'});
 
 		// 4 - check if the passwords are the same
 		const passwordMatch = await bcrypt.compare(password, user.password);
