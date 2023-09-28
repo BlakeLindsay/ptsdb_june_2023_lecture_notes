@@ -96,6 +96,20 @@ router.get('/list', async (req, res) => {
 // TODO Get All with a Specific Crust
 
 // TODO PATCH One (Update One)
+//* PUT endpoint will modify the entire "document" in the database, while a PATCH will only modify fields within a document
+/* 
+	PUT
+	let current = {id: 2, value: "something"};
+	let updated = { id: 2, value: "something-else"};
+
+	current = updated;
+
+	PATCH
+	let current = { id: 2, value: "something"};
+	let updated = { value: "something-else"};
+
+	current.value = updated.value
+*/
 router.patch('/:id', async (req, res) => {
 	try {
 		// grab the value of id
@@ -107,10 +121,14 @@ router.patch('/:id', async (req, res) => {
 		const info = req.body;
 		const returnOptions = { new: true };
 		const updatedPizza = await Pizza.findOneAndUpdate(filter, info, returnOptions);
+		if (!updatedPizza) {
+			throw new Error("Invalid Pizza/User Combination");
+		}
 		res.status(200).json({
-			message: 'Pizza Updated',
+			// message: 'Pizza Updated',
+			message: `${updated._id} updated`,
 			updatedPizza
-		})
+		});
 	} catch (error) {
 		errorResponse(res, error);
 	}
