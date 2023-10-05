@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Pizza = require("../models/pizza.model");
+const validateSession = require('../middleware/validateSession');
 
 function errorResponse(res, err) {
 	res.status(500).json({
@@ -8,7 +9,7 @@ function errorResponse(res, err) {
 };
 
 //! Pizza Order - Add a new pizza to my Mongo Database
-router.post("/order", async (req, res) => {
+router.post("/order", validateSession, async (req, res) => {
   // res.send('Order Post Works!');
   try {
     //? 1. check our model for what we need to order a pizza
@@ -135,20 +136,45 @@ router.patch('/:id', async (req, res) => {
 });
 
 // TODO DELETE One
-router.delete('/:id', async (req, res) => {
-	try{
-		const { id } = req.params;
-		const deletePizza = await Pizza. deleteOne({ _id: id });
 
-		deletePizza.deletedCount ? 
-		res.status(200).json({
-			message: 'pizza deleted'
-		}) :
-		res.status(404).json({
-			message: 'Pizza not deleted'
+// router.delete('/:id', async (req, res) => {
+// 	try{
+// 		const { id } = req.params;
+// 		const deletePizza = await Pizza. deleteOne({ _id: id });
+
+// 		deletePizza.deletedCount ? 
+// 		res.status(200).json({
+// 			message: 'pizza deleted'
+// 		}) :
+// 		res.status(404).json({
+// 			message: 'Pizza not deleted'
+// 		});
+// 	} catch (error) {
+// 		errorResponse(res, error);
+// 	}
+// });
+
+router.delete('/:id', async (req, res) => {
+	try {
+		// we need to know what we want to delete
+		// let id = req.params.id;
+		let { id } = req.params;
+		// locate and delete the item from our database
+		const deletedPizza = await Pizza.deleteOne({
+			_id: id,
+			owner: req.user.id
 		});
-	} catch (error) {
-		errorResponse(res, error);
+		// respond to our client
+		if (deletedPizza.deletedCount) {
+			res.status(200).json({
+				message: 'Pizza Deleted!',
+				deletedPizza
+			});
+		} else {
+			throw new Error ('could not find pizza')
+		}
+	} catch (err) {
+		errorResponse(res, err);
 	}
 });
 

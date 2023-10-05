@@ -24,10 +24,10 @@ app.use(express.json());
 
 const users = require('./controllers/user.controller');
 const pizzas = require('./controllers/pizza.controller');
-const validateSession = require('./middleware/validateSession');
+// const validateSession = require('./middleware/validateSession');
 app.use('/user', users);
 // validate session middleware
-app.use(validateSession); // ALL endpoints and routes below this line will require the validateSession middleware to run successfully before the endpoint runs
+// app.use(validateSession); // ALL endpoints and routes below this line will require the validateSession middleware to run successfully before the endpoint runs
 app.use('/pizza', pizzas);
 
 
