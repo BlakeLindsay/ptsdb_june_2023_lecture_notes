@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
 
 function App() {
 	let displayText = `Here is my new ${13} information to be displayed`;
@@ -8,20 +9,9 @@ function App() {
 	//* JSX = JavaScript XML
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          {displayText}
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* I want to display the header component at the top of this page */}
+      {/* in order to display the header, I must use the component as if it were a self-closing tag */}
+			<Header />
     </div>
   );
 }
