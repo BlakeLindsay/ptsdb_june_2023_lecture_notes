@@ -4,9 +4,11 @@
 // To create a functional component, I start by making a function
 function Header() {
 	// All components should, if nothing else, return JSX which will be displayed when the component is called
+let myName = 'Batman';
+
 	return(
 		<header>
-			<h1>Welcome to React</h1>
+			<h1>Welcome to React, {myName}</h1>
 		</header>
 	)
 }
