@@ -22,6 +22,8 @@ db.once('open', () => console.log(`Connected to: ${MONGO}`));
 //! without this line, I cannot access JSON data from a request
 app.use(express.json());
 
+app.use(require('cors')());
+
 const users = require('./controllers/user.controller');
 const pizzas = require('./controllers/pizza.controller');
 // const validateSession = require('./middleware/validateSession');
