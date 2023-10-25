@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
 	return (
 		<nav>
-			<Link to="/">Home</Link>
+			<Link style={{margin:'3px 10px'}} to="/">Home</Link>
 			{/* Link tags want at least one property, "to". this is going to tell the Link which route to go to */}
-			<Link to="/about">About Me</Link>
-			<Link to="/signup">Sign Up</Link>
+			<Link style={{margin:'3px 10px'}} to="/about">About Me</Link>
+			<Link style={{margin:'3px 10px'}} to="/auth">Sign Up/Login</Link>
 		</nav>
 	)
 }

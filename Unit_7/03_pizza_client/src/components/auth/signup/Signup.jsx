@@ -1,11 +1,14 @@
 // emmet abbreviation: rfce
 import { useState } from 'react';
 
-const Signup = () => {
+const Signup = (props) => {
 	let [email, setEmail] = useState('email');
 	let [password, setPassword] = useState('password');
 	let [lastName, setLastName] = useState('last name');
 	let [firstName, setFirstName] = useState('first name');
+
+	// this will get reset when the Signup component dismounts
+	// const [token, setToken] = useState('');
 
 	const signupRoute = 'http://127.0.0.1:4000/user/signup';
 
@@ -62,6 +65,7 @@ const Signup = () => {
 			});
 			let results = await res.json();
 			console.log(results);
+			props.setToken(results.token);
 		} catch(error) {
 			console.log(error);
 		}
