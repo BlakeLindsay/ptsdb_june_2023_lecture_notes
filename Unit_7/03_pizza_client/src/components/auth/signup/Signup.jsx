@@ -1,7 +1,11 @@
 // emmet abbreviation: rfce
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const Signup = (props) => {
+	// this will give me a function that I can pass a string argument info, and the function will navigate me to that route within my BrowserRouter
+	const navigate = useNavigate();
+
 	let [email, setEmail] = useState('email');
 	let [password, setPassword] = useState('password');
 	let [lastName, setLastName] = useState('last name');
@@ -22,9 +26,13 @@ const Signup = (props) => {
 				<input name='firstName' placeholder='first name' onChange={(e) => {
 					setFirstName(e.target.value);
 				}}/>
+				<br />
 				<input name='lastName' placeholder='last name' onChange={(e) => setLastName(e.target.value)}/>
+				<br />
 				<input name='email' placeholder='email' onChange={(e) => setEmail(e.target.value)}/>
-				<input name='password' placeholder='password' onChange={(e) => setPassword(e.target.value)}/>
+				<br />
+				<input name='password' type='password' placeholder='password' onChange={(e) => setPassword(e.target.value)}/>
+				<br />
 
 				<button type='submit' onClick={displayInputFields}>Submit</button>
 			</form>
@@ -66,6 +74,9 @@ const Signup = (props) => {
 			let results = await res.json();
 			console.log(results);
 			props.setToken(results.token);
+			if (res.status === 200) {
+				navigate('/about');
+			}
 		} catch(error) {
 			console.log(error);
 		}

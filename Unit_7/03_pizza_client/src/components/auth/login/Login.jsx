@@ -2,8 +2,12 @@
 //* Create a login component that takes in the required information(can be found in our login endpoint within the express server). This will send a request to the login endpoint, and store the token if we get one back.
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Login = (props) => {
+const Login = ({ setToken }) => {
+	// this will give me a function that I can pass a string argument info, and the function will navigate me to that route within my BrowserRouter
+	const navigate = useNavigate();
+
 	let [email, setEmail] = useState('email');
 	let [password, setPassword] = useState('password');
 
@@ -13,8 +17,11 @@ const Login = (props) => {
 		<div>
 			<form>
 				<input placeholder="email" onChange={(e) => {setEmail(e.target.value)}}/>
-				<input placeholder="password" onChange={(e) => {setPassword(e.target.value)}}/>
+				<br />
+				<input placeholder="password" type="password" onChange={(e) => {setPassword(e.target.value)}}/>
+				<br />
 
+				{/* button:s */}
 				<button type="submit" onClick={displayInputFields}>Submit</button>
 			</form>
 		</div>
@@ -40,8 +47,11 @@ const Login = (props) => {
 				})
 			});
 			let results = await res.json();
-			console.log(results);
-			props.setToken(results.token);
+			console.log(res);
+			setToken(results.token);
+			if (res.status === 200) {
+				navigate('/about');
+			}
 		} catch(error) {
 			console.log(error);
 		}
