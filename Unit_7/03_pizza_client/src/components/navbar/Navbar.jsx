@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 // Link is going to allow us to go to different routes using our "Link" tags
 
-const Navbar = ({ token }) => {
+const Navbar = ({ token, clearToken }) => {
 	return (
 		<nav>
 			<Link style={{margin:'3px 10px'}} to="/">Home</Link>
@@ -12,7 +12,7 @@ const Navbar = ({ token }) => {
 				?
 				<Link style={{margin:'3px 10px'}} to="/auth">Sign Up/Login</Link>
 				:
-				<Link style={{margin: '3px 10px'}} to="/">Log Out</Link>
+				<Link onClick={clearToken} style={{margin: '3px 10px'}} to="/">Log Out</Link>
 				}
 		</nav>
 	)

@@ -28,12 +28,18 @@ function App() {
     // console.log(localToken);
 	}
 
+	function clearToken() {
+		setToken('');
+		localStorage.removeItem('token');
+		// delete localStorage.token;
+	}
+
   return (
     <div className="App">
 			{/* BrowserRouter is NOT self closing, we are going to place all of our webpage components inside the BrowserRouter */}
 			<BrowserRouter>
 				{/* Routes is not self closing, this will contain multiple different >Route> tags that will all be "siblings" */}
-				<Navbar token={token}/>
+				<Navbar token={token} clearToken={clearToken}/>
 				<Routes>
 					{/* This "Route" is going to load the "App" component when we go to the "/" path in our webpage */}
 					<Route path="/" element={<Home />}/>
